@@ -25,17 +25,17 @@ class Embed:
         # Load embedding model.
         try:
             saved_file = os.path.join(self.embed_model_path, self.embed_model_name)
-            self.embedding_model = KeyedVectors.load(saved_file, mmap='r')
+            self.embedding_model = KeyedVectors.load(os.path.join('model', saved_file), mmap='r')
         except FileExistsError:
             pass
         words = self.embedding_model.wv.index2entity
 
         vectors = np.append(np.array([100 * [0]]), self.embedding_model.wv.vectors, axis=0)
-        print(vectors.size)
+        # print(vectors.size)
 
-        print(words[1])
-        print(self.embedding_model.wv.similarity('he', 'she'))
-        print(self.embedding_model.most_similar(positive=['scary'], topn=10))
+        # print(words[1])
+        # print(self.embedding_model.wv.similarity('he', 'she'))
+        # print(self.embedding_model.most_similar(positive=['scary'], topn=10))
 
         self.word_to_idx = {words[i]: i for i in range(0, len(words))}
 

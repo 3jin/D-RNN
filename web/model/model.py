@@ -31,7 +31,7 @@ class ReviewParser(nn.Module):
         linear = self.linear2(linear)
 
         output = self.softmax(linear[-1])
-        print(output[0])
+        # print(output[0])
         prediction = output[0].max(0)[1]
         if prediction:
             return POSITIVE

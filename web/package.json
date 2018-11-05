@@ -5,6 +5,7 @@
   "repository": "https://github.com/NineDegis/D-RNN",
   "license": "MIT",
   "dependencies": {
+    "child-process-promise": "^2.2.1",
     "koa": "^2.6.1",
     "koa-bodyparser": "^4.2.1",
     "koa-ejs": "^4.1.2",
@@ -24,6 +25,7 @@
     "sass": "rm -r public/css > /dev/null; node-sass public/sass --output-style compressed --output public/css",
     "test": "yarn sass; babel-node index.js test",
     "start": "yarn sass; babel-node index.js start",
-    "db-test": "babel-node database.js"
+    "db-test": "babel-node database.js",
+    "py-test": "babel-node model/model_interpreter.js"
   }
 }

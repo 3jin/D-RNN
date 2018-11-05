@@ -10,7 +10,8 @@ class DatabasePool {
     // TODO(sejin): Make a separated config file
     // const dbConfig = JSON.parse(dbConfigJson);
     const dbConfig = {
-      "host": "172.21.0.3",
+      // "host": "172.21.0.3",
+      "host": "172.18.0.2",
       "port": 3306,
       "user": "root",
       "password": "graduation",

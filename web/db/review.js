@@ -1,5 +1,6 @@
 import pool from './database_pool';
 import { convertQuery } from './db_helpers';
+import { modelInterpreter } from '../model/model_interpreter';
 
 const getReviewList = async (movieID) => {
   const reviewList = [];
@@ -8,7 +9,7 @@ const getReviewList = async (movieID) => {
     movieID
   );
   try {
-    const attrList = ['comment', 'review_datetime'];
+    const attrList = ['comment', 'review_datetime', 'is_friendly'];
     const numResults = rows.length;
     for (let i = 0; i < numResults; i++) {
       reviewList.push(convertQuery(rows[i], attrList));
@@ -26,8 +27,9 @@ const insertReview = async (movieID, reviewComment) => {
     'review_datetime': new Date(),
     'movie_id': movieID,
   };
+  dataForInsertion['is_friendly'] = ((await modelInterpreter(reviewComment, './model/embed.py')) === 'POS');
   try {
-    const rows = await pool.query(
+    await pool.query(
       'INSERT INTO review SET ?',
       dataForInsertion
     );

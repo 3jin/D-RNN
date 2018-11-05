@@ -19,12 +19,12 @@ class Evaluator(object):
 
     def load_checkpoint(self):
         root = os.path.dirname(sys.modules['__main__'].__file__)
-        file_names = glob.glob(os.path.join(root, self.checkpoint_folder, self.prefix + "*.pt"))
+        file_names = glob.glob(os.path.join(root, 'model', self.checkpoint_folder, self.prefix + "*.pt"))
         if len(file_names) == 0:
-            print("[!] Checkpoint not found.")
+            # print("[!] Checkpoint not found.")
             return {}
         file_name = file_names[-1]  # Pick the most recent file.
-        print("[+] Checkpoint Loaded. '{}'".format(file_name))
+        # print("[+] Checkpoint Loaded. '{}'".format(file_name))
         return torch.load(file_name, map_location=self.device_name)
 
     def evaluate(self, batch_size):
@@ -100,4 +100,4 @@ def test():
 
 
 if __name__ == "__main__":
-    test()
+    main()

@@ -46,7 +46,10 @@ var refreshReviews = function (reviewList) {
       "</p>" +
       "<p class='comment'>" +
       reviewList[i].comment +
-      "</p></div>"
+      "<p class='" + (reviewList[i].is_friendly ? 'pos' : 'neg') + "'>" +
+      (reviewList[i].is_friendly ? 'GOOD :D' : 'BAD :(') +
+      "</p>" +
+      "</div>"
     );
   }
 };
